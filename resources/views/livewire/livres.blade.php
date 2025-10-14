@@ -30,7 +30,7 @@
                         <td>{{ $livre->titre }}</td>
                         <td>{{ $livre->date_publication }}</td>
                         <td>{{ $livre->prix }} €</td>
-                        <td>{{ $livre->auteur->nom ?? 'Non défini' }}</td>
+                        <td>{{ $livre->auteur->name ?? 'Non défini' }}</td>
                         <td>{{ $livre->categorie->nom ?? 'Non définie' }}</td>
                     </tr>
                 @endforeach

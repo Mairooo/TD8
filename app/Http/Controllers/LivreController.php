@@ -34,8 +34,10 @@ class LivreController extends Controller
         $categorie = \App\Models\Categorie::findOrFail($categorieId);
         
         // Récupérer les livres de cette catégorie avec pagination
-        $livres = Livre::with(['auteur', 'categorie'])
-                      ->where('categorie_id', $categorieId)
+        $livres = Livre::with(['auteur', 'categories'])
+                      ->whereHas('categories', function($query) use ($categorieId) {
+                          $query->where('categories.id', $categorieId);
+                      })
                       ->orderBy('titre')
                       ->paginate(10);
         
@@ -50,8 +52,8 @@ class LivreController extends Controller
      */
     public function show($id)
     {
-        // Récupérer le livre avec ses relations
-        $livre = Livre::with(['auteur', 'categorie'])->findOrFail($id);
+        // Récupérer le livre avec seulement l'auteur pour éviter les erreurs
+        $livre = Livre::with('auteur')->findOrFail($id);
         
         return view('livres.show', compact('livre'));
     }

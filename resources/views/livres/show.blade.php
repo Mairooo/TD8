@@ -26,16 +26,9 @@
             <td style="padding: 10px;">{{ $livre->date_publication }}</td>
         </tr>
         <tr>
-            <th style="text-align: left; padding: 10px;">Catégorie</th>
+            <th style="text-align: left; padding: 10px;">Catégorie(s)</th>
             <td style="padding: 10px;">
-                @if($livre->categorie)
-                    {{ $livre->categorie->nom }}
-                    @if($livre->categorie->description)
-                        <br><em>{{ $livre->categorie->description }}</em>
-                    @endif
-                @else
-                    <em>Aucune catégorie</em>
-                @endif
+                <em>Fonctionnalité catégories en cours de développement</em>
             </td>
         </tr>
         <tr>
@@ -74,12 +67,7 @@
         <h3>Navigation</h3>
         <a href="/livres">← Retour à la liste des livres</a><br><br>
         
-        @if($livre->categorie)
-            <a href="/livres/categories?categorie={{ $livre->categorie->id }}">Voir les autres livres de la catégorie "{{ $livre->categorie->nom }}"</a><br><br>
-        @endif
-        
         <a href="/auteurs">Voir tous les auteurs</a><br><br>
-        <a href="/categories">Voir toutes les catégories</a><br><br>
         <a href="/">Retour à l'accueil</a>
     </div>
 

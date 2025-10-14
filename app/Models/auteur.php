@@ -28,6 +28,7 @@ class Auteur extends Model
                 throw new \InvalidArgumentException('Format de date de naissance invalide. Utilisez le format Y-m-d.');
             }
             
+
             // Si aucun email n'est fourni, générer un email unique
             if (empty($auteur->mail)) {
                 $auteur->mail = 'auteur_' . uniqid() . '@example.com';

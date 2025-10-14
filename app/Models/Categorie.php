@@ -16,6 +16,6 @@ class Categorie extends Model
 
     public function livres()
     {
-        return $this->hasMany(\App\Models\Livre::class);
+        return $this->belongsToMany(\App\Models\Livre::class);
     }
 }

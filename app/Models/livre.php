@@ -9,15 +9,15 @@ class Livre extends Model
 {
     use HasFactory; // <-- indispensable pour utiliser ::factory()
     
-    protected $fillable = ['titre', 'date_publication', 'auteur_id', 'categorie_id'];
+    protected $fillable = ['titre', 'date_publication', 'auteur_id'];
 
     public function auteur()
     {
         return $this->belongsTo(Auteur::class);
     }
 
-    public function categorie()
+    public function categories()
     {
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsToMany(Categorie::class);
     }
 }

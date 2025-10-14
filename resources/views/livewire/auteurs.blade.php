@@ -13,7 +13,7 @@
     <h3>Liste des auteurs</h3>
     <ul>
         @forelse ($auteurs as $auteur)
-            <li>{{ $auteur->nom }} ({{ $auteur->continent }})</li>
+            <li>{{ $auteur->name }} ({{ $auteur->continent }})</li>
         @empty
             <li>Aucun auteur trouvé</li>
         @endforelse
