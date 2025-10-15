@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Auteur extends Model
 {
+    use Searchable;
     use HasFactory; // <-- indispensable pour utiliser ::factory()
     
     protected $fillable = [
@@ -72,5 +74,13 @@ class Auteur extends Model
     public function livres()
     {
         return $this->hasMany(Livre::class);
+    }
+
+    // Champs indexés dans Meilisearch
+    public function toSearchableArray()
+    {
+        return [
+            'nom' => $this->name,
+        ];
     }
 }

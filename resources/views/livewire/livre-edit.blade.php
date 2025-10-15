@@ -30,34 +30,16 @@
                     @enderror
                 </div>
 
-                <!-- ISBN -->
+                <!-- Date de publication -->
                 <div>
-                    <label for="isbn" class="block text-sm font-medium text-gray-700 mb-2">
-                        ISBN <span class="text-red-500">*</span>
+                    <label for="date_publication" class="block text-sm font-medium text-gray-700 mb-2">
+                        Date de publication <span class="text-red-500">*</span>
                     </label>
-                    <input wire:model="isbn" 
-                           type="text" 
-                           id="isbn" 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                           placeholder="Entrez l'ISBN">
-                    @error('isbn') 
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p> 
-                    @enderror
-                </div>
-
-                <!-- Année de publication -->
-                <div>
-                    <label for="annee_publication" class="block text-sm font-medium text-gray-700 mb-2">
-                        Année de publication <span class="text-red-500">*</span>
-                    </label>
-                    <input wire:model="annee_publication" 
-                           type="number" 
-                           id="annee_publication" 
-                           min="1900" 
-                           max="2025"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                           placeholder="YYYY">
-                    @error('annee_publication') 
+                    <input wire:model="date_publication" 
+                           type="date" 
+                           id="date_publication" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    @error('date_publication') 
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p> 
                     @enderror
                 </div>

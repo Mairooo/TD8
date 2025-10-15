@@ -10,25 +10,20 @@ class LivreEdit extends Component
 {
     public $livreId;
     public $titre = '';
-    public $isbn = '';
-    public $annee_publication = '';
+    public $date_publication = '';
     public $auteur_id = '';
 
     protected $rules = [
         'titre' => 'required|min:3',
-        'isbn' => 'required',
-        'annee_publication' => 'required|integer|min:1900|max:2025',
+        'date_publication' => 'required|date',
         'auteur_id' => 'required|exists:auteurs,id',
     ];
 
     protected $messages = [
         'titre.required' => 'Le titre est obligatoire.',
         'titre.min' => 'Le titre doit contenir au moins 3 caractères.',
-        'isbn.required' => 'L\'ISBN est obligatoire.',
-        'annee_publication.required' => 'L\'année de publication est obligatoire.',
-        'annee_publication.integer' => 'L\'année doit être un nombre.',
-        'annee_publication.min' => 'L\'année doit être supérieure à 1900.',
-        'annee_publication.max' => 'L\'année ne peut pas être supérieure à 2025.',
+        'date_publication.required' => 'La date de publication est obligatoire.',
+        'date_publication.date' => 'La date doit être valide.',
         'auteur_id.required' => 'Veuillez sélectionner un auteur.',
     ];
 
@@ -38,8 +33,7 @@ class LivreEdit extends Component
         $livre = Livre::findOrFail($id);
         
         $this->titre = $livre->titre;
-        $this->isbn = $livre->isbn;
-        $this->annee_publication = $livre->annee_publication;
+        $this->date_publication = $livre->date_publication;
         $this->auteur_id = $livre->auteur_id;
     }
 
@@ -50,8 +44,7 @@ class LivreEdit extends Component
         $livre = Livre::findOrFail($this->livreId);
         $livre->update([
             'titre' => $this->titre,
-            'isbn' => $this->isbn,
-            'annee_publication' => $this->annee_publication,
+            'date_publication' => $this->date_publication,
             'auteur_id' => $this->auteur_id,
         ]);
 
